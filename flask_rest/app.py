@@ -31,7 +31,7 @@ class Product(db.Model):
 
     def __init__(self, name, description, price, qty):
         self.name = name
-        self.description
+        self.description = description
         self.price = price
         self.qty = qty
 
@@ -47,9 +47,23 @@ product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
 
 
+# routes
 @app.route('/', methods=['GET'])
 def get():
     return jsonify({'msg': 'hello world'})
+
+# create a product
+
+
+@app.route('/products', methods=['POST'])
+def add_product():
+    name = request.json['name']
+    description = request.json['description']
+    price = request.json['price']
+    qty = request.json['qty']
+    new_product = Product(name, description, price, qty)
+    db.session.commit()
+    return product_schema.jsonify(new_product)
 
 
 # run server

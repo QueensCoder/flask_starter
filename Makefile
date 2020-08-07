@@ -4,6 +4,9 @@ CC := gcc
 
 CC := ${CC}
 
+test:
+	@echo "this is a test log to see if you're in right make file dir"
+
 all: 
 	@echo ${CC}
 
@@ -24,4 +27,4 @@ clean:
 	rm *.text
 
 git:
-	./bash_test
+	./bash_scripts/bash_test
