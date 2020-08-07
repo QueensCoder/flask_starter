@@ -22,3 +22,6 @@ generate:
 clean:
 	@echo "removing txt files"
 	rm *.text
+
+git:
+	./bash_test
